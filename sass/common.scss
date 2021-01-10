@@ -1,0 +1,182 @@
+@charset "utf-8";
+@import "design";
+.elips {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.clear {
+    clear: both;
+}
+
+.input-wrap {
+    //background-color: #ff0;
+    position: relative;
+    padding-top: 50px;
+    .error-txt {
+        color: #f00;
+        padding-top: 5px;
+        display: none;
+        margin-bottom: -13px;
+    }
+    &.error {
+        .error-txt {
+            display: block;
+        }
+    }
+    &.valid {
+        .inp-txt {
+            +label {
+                opacity: 0;
+            }
+            &:focus {
+                +label {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .inp-txt {
+        height: 55px;
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid #808080;
+        +label {
+            color: #999;
+            font-size: 16px;
+            position: absolute;
+            top: 69px;
+            left: 13px;
+            transition: all .3s ease-in;
+        }
+        // &:required:invalid {
+        //     +label {
+        //         opacity: 1;
+        //     }
+        // }
+        // &:required:valid {
+        //     +label {
+        //         opacity: 0;
+        //     }
+        // }
+        &:focus {
+            border-bottom-color: #0072de;
+            +label {
+                top: 15px;
+                left: 3px;
+                color: #0072de;
+            }
+            // &:required {
+            //     +label {
+            //         opacity: 1;
+            //     }
+            // }
+        }
+    }
+    .inp-select {
+        display: block;
+        width: 100%;
+        height: 55px;
+        border-bottom: 2px solid #808080;
+        position: relative;
+        select {
+            width: 100%;
+            height: 100%;
+            border: none;
+            -webkit-appearance: none;
+            font-size: 16px;
+            padding-left: 13px;
+            padding-top: 7px;
+            color: #999;
+        }
+        +label {
+            display: block;
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        &.on {
+            select {
+                color: #222;
+            }
+            +label {
+                position: absolute;
+                top: 15px;
+                left: 23px;
+                font-size: 16px;
+                color: #0072de;
+                height: auto;
+                overflow: visible;
+                opacity: 1;
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-top: 10px solid #555;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+    }
+    &.split-3 {
+        overflow: hidden;
+        margin-left: -20px;
+        .label {
+            position: absolute;
+            top: 15px;
+            left: 23px;
+        }
+        .col {
+            width: 33.33%;
+            float: left;
+            padding-left: 20px;
+            &:nth-of-type(1) {
+                label {
+                    left: 33px;
+                }
+            }
+            &:nth-of-type(3) {
+                label {
+                    left: calc(66.66% + 33px);
+                }
+            }
+        }
+        .inp-txt {
+            &:focus {
+                +label {
+                    left: 23px;
+                }
+            }
+        }
+    }
+}
+
+.btn-group {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0;
+    button {
+        font-size: 16px;
+        width: 150px;
+        height: 44px;
+        border-radius: 22px;
+        background-color: #f2f2f2;
+        border: none;
+    }
+    *[class^="btn-"] {
+        ~*[class^="btn-"] {
+            margin-left: 20px;
+        }
+    }
+    .btn-ok {
+        button {
+            color: #fff;
+            background-color: $mainColor-1;
+        }
+    }
+}
